@@ -1,0 +1,131 @@
+/* ====== Palette & base ====== */
+:root{
+  --pink:#ffb7d1; --blush:#ffd9e6; --cream:#fff7ef; --hot:#ff6fa5; --deep:#e8578f; --ink:#7a3b57;
+  --shadow:0 10px 24px rgba(232,87,143,.25);
+}
+*{box-sizing:border-box}
+html{-webkit-tap-highlight-color:transparent}
+body{
+  margin:0; min-height:100svh; color:var(--ink);
+  font-family:"Quicksand",system-ui,sans-serif; font-weight:500; line-height:1.5;
+  background:
+    radial-gradient(circle at 12% 8%, #fff 0 6px, transparent 7px) 0 0/46px 46px,
+    radial-gradient(circle at 80% 15%, var(--blush), transparent 45%),
+    radial-gradient(circle at 15% 90%, #ffc6dc, transparent 50%),
+    var(--cream);
+  background-attachment:fixed;
+  overflow-x:hidden;
+}
+h1,h2,.btn,.bubble,.guess{font-family:"Fredoka",sans-serif}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+:focus-visible{outline:3px dashed var(--deep);outline-offset:3px}
+[hidden]{display:none!important}
+
+/* ====== Floating hearts ====== */
+.floaters{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.floaters span{position:absolute;bottom:-40px;left:var(--x);font-size:var(--s);opacity:0;animation:rise var(--d) linear var(--delay) infinite}
+@keyframes rise{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:.7}90%{opacity:.5}100%{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+
+/* ====== Layout ====== */
+.stage{position:relative;z-index:1;min-height:100svh;display:flex;align-items:center;justify-content:center;padding:28px 16px 150px}
+.page{width:min(100%,560px);text-align:center;display:flex;flex-direction:column;align-items:center}
+.page.wide{width:min(100%,760px)}
+.page.in{animation:pop .6s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes pop{from{opacity:0;transform:translateY(18px) scale(.92)}to{opacity:1;transform:none}}
+
+.card{
+  position:relative; width:100%; padding:28px 22px; background:#fffafc;
+  border:3px solid var(--pink); border-radius:30px; box-shadow:var(--shadow);
+}
+.card::after{content:"🎀";position:absolute;right:-8px;top:-14px;font-size:30px;transform:rotate(15deg)}
+h1,h2{margin:0 0 18px;font-weight:600;line-height:1.25;color:var(--deep);font-size:clamp(1.35rem,5vw,1.9rem)}
+h1:focus,h2:focus{outline:none}
+.lead{font-size:1.2rem;font-weight:700;margin:8px 0}
+
+/* ====== Cats ====== */
+.peek{width:150px;position:relative;z-index:2;margin-bottom:-26px;animation:bob 3s ease-in-out infinite}
+.big-cat{width:min(70vw,250px);margin-bottom:-6px;animation:bob 2.4s ease-in-out infinite;filter:drop-shadow(0 8px 10px rgba(232,87,143,.25))}
+@keyframes bob{50%{transform:translateY(-8px) rotate(-1.5deg)}}
+
+/* ====== Buttons ====== */
+.btn-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{
+  font-size:1.25rem;font-weight:600;padding:14px 30px;border-radius:999px;cursor:pointer;
+  border:3px solid var(--ink);color:var(--ink);box-shadow:0 5px 0 var(--ink);
+  transition:transform .15s, box-shadow .15s;
+}
+.btn-yes{background:linear-gradient(180deg,#ffc2da,var(--hot));color:#fff;text-shadow:0 1px 0 rgba(122,59,87,.4)}
+.btn-no{background:var(--cream)}
+.btn:hover{transform:translateY(-3px) rotate(-1deg)}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--ink)}
+.btn.small{font-size:.9rem;padding:8px 14px;box-shadow:0 3px 0 var(--ink)}
+.pulse{margin-top:14px;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.07)}}
+
+/* ====== "No" branch ====== */
+.no-box{margin-top:22px;padding-top:18px;border-top:3px dotted var(--pink);animation:pop .5s both}
+.sticker{position:relative;display:inline-block;width:130px;animation:wiggle 1.4s ease-in-out infinite}
+.sticker svg{width:100%}
+.bubble{position:absolute;left:78%;top:-6px;white-space:nowrap;background:#fff;border:3px solid var(--pink);border-radius:18px;padding:4px 12px;font-size:1rem;box-shadow:var(--shadow)}
+@keyframes wiggle{50%{transform:rotate(5deg)}}
+form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+input{
+  font:inherit;font-weight:700;color:var(--ink);padding:12px 18px;width:min(100%,260px);
+  border:3px solid var(--pink);border-radius:999px;background:#fff;text-align:center;
+}
+input::placeholder{color:#d9a0b8}
+.oops{min-height:1.6em;margin:10px 0 0;font-weight:700;color:var(--deep)}
+.shake{animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+
+/* ====== Sticker-album gallery ====== */
+.album-title{margin-bottom:22px}
+.album{display:grid;grid-template-columns:1fr 1fr;gap:20px 16px;width:100%;margin-bottom:28px}
+.polaroid{
+  position:relative;margin:0;padding:8px;background:#fff;border:3px solid var(--pink);border-radius:22px;
+  box-shadow:var(--shadow);aspect-ratio:4/5;cursor:pointer;transition:transform .25s cubic-bezier(.2,1.6,.4,1);
+}
+.polaroid::before{content:"";position:absolute;top:-12px;left:50%;width:70px;height:22px;transform:translateX(-50%) rotate(-4deg);background:rgba(255,183,209,.8);border-radius:4px;z-index:2}
+.polaroid::after{content:"💗";position:absolute;right:-8px;bottom:-10px;font-size:26px;z-index:2}
+.polaroid:nth-child(even)::after{content:"✨";left:-8px;right:auto}
+.p1{transform:rotate(-3deg)}.p2{transform:rotate(2.5deg)}.p3{transform:rotate(2deg)}.p4{transform:rotate(-2.5deg)}
+.polaroid:hover,.polaroid:focus-visible,.polaroid.pop-it{transform:rotate(0) scale(1.06) translateY(-4px);z-index:3}
+.polaroid img{width:100%;height:100%;object-fit:cover;border-radius:15px;display:block}
+.ph{display:none;width:100%;height:100%;border-radius:15px;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  background:repeating-linear-gradient(45deg,#ffe3ee 0 12px,#fff0f6 12px 24px);font-size:.8rem;font-weight:700}
+.ph svg{width:62%}
+.missing img{display:none}.missing .ph{display:flex}
+
+.letter{padding-top:34px}
+.guess{font-size:clamp(1.4rem,6vw,2rem);font-weight:600;color:var(--deep);margin:0 0 12px}
+.letter .btn{margin-top:14px}
+
+/* ====== Music sticker ====== */
+.music{
+  position:fixed;z-index:10;right:12px;bottom:12px;width:min(340px,calc(100vw - 24px));
+  background:var(--cream);border:3px dashed var(--hot);border-radius:24px;padding:10px 12px;box-shadow:var(--shadow);
+  transform:rotate(-1.2deg);
+}
+.music::before{content:"💗";position:absolute;left:-10px;top:-12px;font-size:22px}
+.music-head{display:flex;align-items:center;gap:10px}
+.disc{position:relative;flex:none;width:44px;height:44px;border-radius:50%;background:var(--blush);border:3px solid var(--pink);display:grid;place-items:center;font-size:20px}
+.note{position:absolute;color:var(--hot);font-size:15px;opacity:0;animation:note 2.6s ease-in infinite}
+.n1{left:-4px;top:2px}.n2{right:-6px;top:6px;animation-delay:.9s}.n3{left:14px;top:-8px;animation-delay:1.7s}
+@keyframes note{0%{opacity:0;transform:translateY(8px)}30%{opacity:1}100%{opacity:0;transform:translate(8px,-26px) rotate(20deg)}}
+.meta{display:flex;flex-direction:column;line-height:1.2;min-width:0;flex:1}
+.meta strong{font-family:"Fredoka",sans-serif;font-size:1.05rem}
+.meta span{font-size:.85rem}
+.music-panel{max-height:0;overflow:hidden;visibility:hidden;transition:max-height .35s}
+.music.open .music-panel{max-height:260px;visibility:visible;margin-top:10px}
+.music iframe{display:block;width:100%;height:152px;border:0;border-radius:14px}
+.fallback{font-size:.85rem;margin:8px 0 0}
+.listen{display:inline-block;margin-top:8px;font-weight:700;color:var(--deep)}
+
+@media (max-width:480px){
+  .music{right:50%;transform:translateX(50%) rotate(-1deg)}
+  .btn{padding:12px 24px}
+  .music-head .btn.small{padding:7px 10px;font-size:.8rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}

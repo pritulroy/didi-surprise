@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Little Surprise for You 💗</title>
+  <meta name="theme-color" content="#ffd9e6">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Reusable cartoon pieces (cat, eyes, heart, bow) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="heart" viewBox="0 0 32 29"><path d="M16 28C4 18 0 12 0 8a8 8 0 0 1 16-3 8 8 0 0 1 16 3c0 4-4 10-16 20z" fill="#ff6fa5"/></symbol>
+    <symbol id="cat" viewBox="0 0 120 110">
+      <g stroke="#7a3b57" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M18 48L16 10l32 20z" fill="#fff"/><path d="M102 48l2-38-32 20z" fill="#fff"/>
+        <path d="M24 38l-1-18 15 10z" fill="#ffb7d1" stroke="none"/><path d="M96 38l1-18-15 10z" fill="#ffb7d1" stroke="none"/>
+        <ellipse cx="60" cy="68" rx="48" ry="38" fill="#fff"/>
+        <path d="M60 81q-5 7-11 2M60 81q5 7 11 2" fill="none"/>
+        <path d="M14 72H2M15 80L4 84M106 72h12M105 80l11 4" fill="none" stroke-width="2.5"/>
+      </g>
+      <circle cx="30" cy="80" r="8" fill="#ffb7d1" opacity=".75"/><circle cx="90" cy="80" r="8" fill="#ffb7d1" opacity=".75"/>
+      <path d="M56 75h8l-4 5z" fill="#e8578f"/>
+      <path d="M88 22l14-8v16zM88 22L74 14v16z" fill="#ff6fa5" stroke="#7a3b57" stroke-width="2" stroke-linejoin="round"/><circle cx="88" cy="22" r="4" fill="#e8578f"/>
+    </symbol>
+    <symbol id="eyes-open" viewBox="0 0 120 110"><g fill="#7a3b57"><circle cx="42" cy="64" r="6"/><circle cx="78" cy="64" r="6"/></g><g fill="#fff"><circle cx="44" cy="62" r="2"/><circle cx="80" cy="62" r="2"/></g></symbol>
+    <symbol id="eyes-happy" viewBox="0 0 120 110"><path d="M35 67q7-11 14 0M71 67q7-11 14 0" fill="none" stroke="#7a3b57" stroke-width="4" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<div class="floaters" id="floaters" aria-hidden="true"></div>
+
+<main class="stage">
+
+  <!-- ============ PAGE 1 — THE CUTE QUESTION ============ -->
+  <section class="page in" id="page1" aria-labelledby="q-title">
+    <svg class="peek" viewBox="0 0 120 118" role="img" aria-label="A cute cat peeking over the card">
+      <use href="#cat" width="120" height="110"/><use href="#eyes-open" width="120" height="110"/>
+      <ellipse cx="34" cy="108" rx="13" ry="8" fill="#fff" stroke="#7a3b57" stroke-width="3"/>
+      <ellipse cx="86" cy="108" rx="13" ry="8" fill="#fff" stroke="#7a3b57" stroke-width="3"/>
+    </svg>
+    <div class="card">
+      <h1 id="q-title" tabindex="-1">Do u want to know who is the most cuteeeeeeest person in the world? 🎀💗</h1>
+      <div class="btn-row">
+        <button class="btn btn-yes" id="yesBtn" type="button">Yes 💗</button>
+        <button class="btn btn-no" id="noBtn" type="button">No 🙈</button>
+      </div>
+
+      <!-- Shown only after "No" -->
+      <div class="no-box" id="noBox" hidden>
+        <div class="sticker" aria-hidden="true">
+          <svg viewBox="0 0 120 110"><use href="#cat"/><use href="#eyes-happy"/></svg>
+          <span class="bubble">I know u 😂💗</span>
+        </div>
+        <p class="lead">Okayieee, now type YES to continue! 🥹💕</p>
+        <form id="yesForm" novalidate>
+          <label class="sr-only" for="yesInput">Type yes to continue</label>
+          <input id="yesInput" type="text" placeholder="Type yes here... 💌" autocomplete="off" autocapitalize="off" enterkeyhint="go">
+          <button class="btn btn-yes" type="submit">YESSS 💗</button>
+        </form>
+        <p class="oops" id="oops" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 2 — THE CELEBRATION ============ -->
+  <section class="page" id="page2" aria-labelledby="yay-title" hidden>
+    <svg class="big-cat" viewBox="0 0 160 190" role="img" aria-label="A big cat holding a heart">
+      <ellipse cx="80" cy="150" rx="44" ry="36" fill="#fff" stroke="#7a3b57" stroke-width="3"/>
+      <svg x="20" y="0" width="120" height="110" viewBox="0 0 120 110"><use href="#cat"/><use href="#eyes-happy"/></svg>
+      <use href="#heart" x="52" y="108" width="56" height="50"/>
+      <ellipse cx="46" cy="134" rx="13" ry="9" fill="#fff" stroke="#7a3b57" stroke-width="3"/>
+      <ellipse cx="114" cy="134" rx="13" ry="9" fill="#fff" stroke="#7a3b57" stroke-width="3"/>
+    </svg>
+    <div class="card">
+      <h2 id="yay-title" tabindex="-1">YAYYYYY! 🎉💗</h2>
+      <p class="lead">You said YESSSS!</p>
+      <p>Now get ready for a tiny surprise, cutieee! 🥹🎀</p>
+      <button class="btn btn-yes pulse" id="resultBtn" type="button">See the Result → 💌</button>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 3 — THE FINAL SURPRISE ============ -->
+  <section class="page wide" id="page3" aria-labelledby="final-title" hidden>
+    <h2 id="final-title" class="album-title" tabindex="-1">Here are the 4 most cuteeeest people in the world! 💗</h2>
+
+    <!--
+      ★ YOUR 4 PHOTOS GO HERE ★
+      Put your pictures in a folder named "images" next to index.html and name them exactly:
+        images/photo1.jpg   images/photo2.jpg   images/photo3.jpg   images/photo4.jpg
+      Until a file exists, a cute placeholder is shown automatically (layout never breaks).
+      To use PNG/other names, just edit the src="" and the alt="" text below.
+    -->
+    <div class="album">
+      <figure class="polaroid p1" tabindex="0"><img src="images/photo1.jpg" alt="Cutie number 1" loading="lazy"><div class="ph"><svg viewBox="0 0 120 110"><use href="#cat"/><use href="#eyes-happy"/></svg><span>photo1.jpg goes here 💗</span></div></figure>
+      <figure class="polaroid p2" tabindex="0"><img src="images/photo2.jpg" alt="Cutie number 2" loading="lazy"><div class="ph"><svg viewBox="0 0 120 110"><use href="#cat"/><use href="#eyes-open"/></svg><span>photo2.jpg goes here 💗</span></div></figure>
+      <figure class="polaroid p3" tabindex="0"><img src="images/photo3.jpg" alt="Cutie number 3" loading="lazy"><div class="ph"><svg viewBox="0 0 120 110"><use href="#cat"/><use href="#eyes-open"/></svg><span>photo3.jpg goes here 💗</span></div></figure>
+      <figure class="polaroid p4" tabindex="0"><img src="images/photo4.jpg" alt="Cutie number 4" loading="lazy"><div class="ph"><svg viewBox="0 0 120 110"><use href="#cat"/><use href="#eyes-happy"/></svg><span>photo4.jpg goes here 💗</span></div></figure>
+    </div>
+
+    <div class="card letter">
+      <p class="guess">Guess who? ... YOUUUU! 💗🥹🎀</p>
+      <p>Because honestly, the world becomes a little more beautiful just because you're in it. Stay the way you are, my cutieee! Love uuu so muchhh didi! 💗🫶🏻</p>
+      <button class="btn btn-no" id="replayBtn" type="button">Replay the surprise ↻</button>
+    </div>
+  </section>
+</main>
+
+<!-- ============ SPOTIFY MUSIC STICKER (stays on every page) ============ -->
+<aside class="music" id="music" aria-label="Music player: Blush by Taba Chake">
+  <div class="music-head">
+    <div class="disc" aria-hidden="true">🎵<span class="note n1">♪</span><span class="note n2">♫</span><span class="note n3">♪</span></div>
+    <div class="meta"><strong>Blush</strong><span>Taba Chake</span></div>
+    <button class="btn small btn-yes" id="musicBtn" type="button" aria-expanded="false" aria-controls="musicPanel">Play our song 🎧💗</button>
+  </div>
+  <div class="music-panel" id="musicPanel">
+    <div id="embedSlot"></div>
+    <p class="fallback" id="fallback" hidden>The player couldn't load here — no worries, use the link below 💗</p>
+    <!-- Official Spotify track, verified: Blush — Taba Chake (2020, 3:19) -->
+    <a class="listen" href="https://open.spotify.com/track/5FKau0mX86PvGu3EbWn7qX" target="_blank" rel="noopener noreferrer">Listen on Spotify ↗</a>
+  </div>
+</aside>
+
+<script src="script.js"></script>
+</body>
+</html>
